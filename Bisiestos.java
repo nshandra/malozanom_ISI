@@ -1,6 +1,7 @@
 public class Bisiestos {
 	// Devuelve true si año es bisiesto, false en caso contrario
 	// No se especifica qué ocurre si el número es negativo
+	// => Se ha optado por lanzar la excepción RuntimeException
 	public boolean esBisiesto(int año) {
 		if (año < 0 || año == 0) {
 			throw new RuntimeException("Año inválido");
