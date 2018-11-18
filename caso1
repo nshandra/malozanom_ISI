@@ -1,7 +1,0 @@
-1. SUT: método esBisiesto() de la clase Bisiestos
-2. Parámetros del SUT: int año.
-3. Caracterización basada en la funcionalidad:
-	-b1: Números divisibles entre 4 pero no entre 100.
-	-b2: Números divisibles entre 4, entre 100 y entre 400.
-	-b3: Resto de números positivos, el 0 y negativos.
-
