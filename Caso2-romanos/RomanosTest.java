@@ -20,32 +20,98 @@ public class RomanNumeralTest
 		assertTrue ("testParasBisiestoSegunB1", decimal == 1);
 	}
 
-	// Test para comprobar los ss que son bisiestos según el bloque b2:
-	// "ss divisibles entre 4, entre 100 y entre 400"
 	@Test
 	public void testParasBisiestoSegunB2()
 	{
-		s = 1600;
-		boolean convierte = roman.convierte(s);
-		assertTrue ("testParasBisiestoSegunB2", convierte == true);
+		s = V;
+		String decimal = roman.convierte(s);
+		assertTrue ("testParasBisiestoSegunB1", decimal == 5);
 	}
 
-	// Test para comprobar los ss que no son bisiestos según el bloque b3:
-	// "Resto de ss"
 	@Test
-	public void testParasNoBisiestoSegunB3()
+	public void testParasBisiestoSegunB3()
 	{
-		s = 1;
-		boolean convierte = roman.convierte(s);
-		assertTrue ("testParasNoBisiestoSegunB3", convierte == false);
+		s = X;
+		String decimal = roman.convierte(s);
+		assertTrue ("testParasBisiestoSegunB1", decimal == 10);
 	}
 
-	// Test para comprobar que un s es inválido según el bloque b4:
-	// "ss inválidos (números negativos y el 0)."
-	@Test (expected = RuntimeException.class)
-	public void testParasInvalido()
+	@Test
+	public void testParasBisiestoSegunB4()
 	{
-		s = -1;
+		s = L;
+		String decimal = roman.convierte(s);
+		assertTrue ("testParasBisiestoSegunB1", decimal == 50);
+	}
+
+	@Test
+	public void testParasBisiestoSegunB5()
+	{
+		s = C;
+		String decimal = roman.convierte(s);
+		assertTrue ("testParasBisiestoSegunB1", decimal == 100);
+	}
+
+	@Test
+	public void testParasBisiestoSegunB6()
+	{
+		s = D;
+		String decimal = roman.convierte(s);
+		assertTrue ("testParasBisiestoSegunB1", decimal == 50);
+	}
+
+	@Test
+	public void testParasBisiestoSegunB7()
+	{
+		s = M;
+		String decimal = roman.convierte(s);
+		assertTrue ("testParasBisiestoSegunB1", decimal == 1000);
+	}
+
+	@Test
+	public void testParasBisiestoSegunB8()
+	{
+		s = vii;
+		String decimal = roman.convierte(s);
+		assertTrue ("testParasBisiestoSegunB1", decimal == 7);
+	}
+
+	@Test (expected = RuntimeException.class)
+	public void badRoman()
+	{
+		s = xiiii;
 		roman.convierte(s);
+	}
+
+	@Test
+	public void testParasBisiestoSegunB9()
+	{
+		s = I;
+		String decimal = roman.convierte(s);
+		assertTrue ("testParasBisiestoSegunB1", decimal == 1);
+	}
+
+	@Test
+	public void testParasBisiestoSegunB10()
+	{
+		s = I;
+		String decimal = roman.convierte(s);
+		assertTrue ("testParasBisiestoSegunB1", decimal == 1);
+	}
+
+	@Test
+	public void testParasBisiestoSegunB11()
+	{
+		s = I;
+		String decimal = roman.convierte(s);
+		assertTrue ("testParasBisiestoSegunB1", decimal == 1);
+	}
+
+	@Test
+	public void testParasBisiestoSegunB12()
+	{
+		s = I;
+		String decimal = roman.convierte(s);
+		assertTrue ("testParasBisiestoSegunB1", decimal == 1);
 	}
 }

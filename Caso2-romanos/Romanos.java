@@ -5,46 +5,82 @@ public class RomanNumeral {
 	public int convierte(String s) {
 
 		int decimal = 0 //esta es la variable en la que vamos a ir almacenando la suma
+		int m = 0;
+		int d = 0;
+		int c = 0;
+		int l = 0;
+		int x = 0;
+		int v = 0;
+		int i = 0;
+		
 
 		if (s.length() <= 0) {
 			throw new RuntimeException("Longitud incorrecta");
 		}
 		String romanNumeral = s.toUpperCase(); //lo ponemos todo en myosculas para facilitarnos las cosas
-		for (int i= 0;i < romanNumeral.length() ;i++ ) {
+		for (int n= 0;n < romanNumeral.length() ;n++ ) {
 			//vamos a ir recorriendonos el string caracter a caracter 
 			char decimalConvert = romanNumeral.charAt(i);
 			switch (decimalConvert) {
 				case 'M':
 		            decimal += 1000;
+		            m = m+1;
 		            break;
 
 		        case 'D':
 		            decimal += 500;
+		            d = d + 1;
 		            break;
 
 		        case 'C':
 		            decimal += 100;
+		            c = c + 1;
 		            break;
 
 		        case 'L':
 		            decimal += 50;
+		            l = l + 1;
 		            break;
 
 		        case 'X':
 		            decimal += 10;
+		            x = x+1;
 		            break;
 
 		        case 'V':
 		            decimal += 5;
+		            v = v+1;
 		            break;
 
 		        case 'I':
 		            decimal += 1;
+		            i = i+1;
 		            break;
 
 		        default:
 		        throw new RuntimeException("Letra incorrecta");
         	}
+		}
+		if (m>3) {
+			throw new RuntimeException("más de tres letras iguales");
+		}
+		if (d>3) {
+			throw new RuntimeException("más de tres letras iguales");
+		}
+		if (c>3) {
+			throw new RuntimeException("más de tres letras iguales");
+		}
+		if (l>3) {
+			throw new RuntimeException("más de tres letras iguales");
+		}
+		if (x>3) {
+			throw new RuntimeException("más de tres letras iguales");
+		}
+		if (v>3) {
+			throw new RuntimeException("más de tres letras iguales");
+		}
+		if (i>3) {
+			throw new RuntimeException("más de tres letras iguales");
 		}
 		//ahora tenemos que comprobar las restas 
 		if (romanNumeral.contains("IV"))
