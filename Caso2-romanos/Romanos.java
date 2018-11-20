@@ -110,21 +110,21 @@ public class RomanNumeral {
 	    return decimal;
 	}
 
-	public static void main(String[] args) {
-	 	RomanNumeral roman = new RomanNumeral();
-	 	System.out.println(roman.convierte(m));
-	 	System.out.println(roman.convierte(v));
-	 	System.out.println(roman.convierte(vi));
-	 	System.out.println();
-	 	System.out.println(roman.convierte(iv));
-	 	System.out.println(roman.convierte(xii));
-		System.out.println(roman.convierte(ix));
-	 	System.out.println(xxx);
-	 	System.out.println(roman.convierte(m));
-	 	System.out.println(roman.convierte(d));
-	 	System.out.println(roman.convierte(cd));
-		System.out.println();
-		System.out.println(roman.convierte(h));
-		System.out.println(roman.convierte(52));
-	}
+		public static void main(String[] args) {
+		 	RomanNumeral roman = new RomanNumeral();
+		 	System.out.println(roman.convierte(m));
+		 	System.out.println(roman.convierte(v));
+		 	System.out.println(roman.convierte(vi));
+		 	System.out.println();
+		 	System.out.println(roman.convierte(iv));
+		 	System.out.println(roman.convierte(xii));
+			System.out.println(roman.convierte(ix));
+		 	System.out.println(xxx);
+		 	System.out.println(roman.convierte(m));
+		 	System.out.println(roman.convierte(d));
+		 	System.out.println(roman.convierte(cd));
+			System.out.println();
+			System.out.println(roman.convierte(h));
+			System.out.println(roman.convierte(52));
+		}
 }
