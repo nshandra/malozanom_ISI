@@ -1,6 +1,8 @@
 
 import java.util.*;
 import java.time.*;
+import java.lang.Comparable;
+
 public class DescuentoBlackFriday {
 
 	public double PrecioFinal(double precioOriginal) {
