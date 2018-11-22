@@ -91,19 +91,59 @@ public class RomanNumeral {
 	    }
 	    if (romanNumeral.contains("XL"))
 	    {
-	        decimal-=10;
+	        decimal-=20;
 	    }
 	    if (romanNumeral.contains("XC"))
 	    {
-	        decimal-=10;
+	        decimal-=20;
 	    }
 	    if (romanNumeral.contains("CD"))
 	    {
-	        decimal-=100;
+	        decimal-=200;
 	    }
 	    if (romanNumeral.contains("CM"))
 	    {
-	        decimal-=100;
+	        decimal-=200;
+	    }
+	    if (romanNumeral.contains("VV"))
+	    {
+	        throw new RuntimeException("combinación incorrecta");
+	    }
+	    if (romanNumeral.contains("LL"))
+	    {
+	        throw new RuntimeException("combinación incorrecta");
+	    }
+	    if (romanNumeral.contains("DD"))
+	    {
+	        throw new RuntimeException("combinación incorrecta");
+	    }
+	    if (romanNumeral.contains("CM"))
+	    {
+	        throw new RuntimeException("combinación incorrecta");
+	    }
+	    if (romanNumeral.contains("IL"))
+	    {
+	        throw new RuntimeException("combinación incorrecta");
+	    }
+	    if (romanNumeral.contains("IC"))
+	    {
+	        throw new RuntimeException("combinación incorrecta");
+	    }
+	    if (romanNumeral.contains("IM"))
+	    {
+	        throw new RuntimeException("combinación incorrecta");
+	    }
+	    if (romanNumeral.contains("ID"))
+	    {
+	        throw new RuntimeException("combinación incorrecta");
+	    }
+	    if (romanNumeral.contains("XD"))
+	    {
+	        throw new RuntimeException("combinación incorrecta");
+	    }
+	    if (romanNumeral.contains("XM"))
+	    {
+	        throw new RuntimeException("combinación incorrecta");
 	    }
 	    return decimal;
 	}
