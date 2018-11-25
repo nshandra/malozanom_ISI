@@ -12,6 +12,7 @@ public class EmbotelladoraTest
 
 	// Test para calcular las botellas pequeñas según el bloque b1:
 	// "Más botellas pequeñas que grandes y total de litros inferior o igual a la capacidad"
+	// Recorre el camino de prueba iv = [1, 3, 5, 7]
 	@Test
 	public void testParaCalcularBotellasPequenasSegunB1()
 	{
@@ -24,6 +25,7 @@ public class EmbotelladoraTest
 
 	// Test para calcular las botellas pequeñas según el bloque b2:
 	// "Más botellas pequeñas que grandes y total de litros superior a la capacidad"
+	// Recorre el camino de prueba iii = [1, 3, 5, 6]
 	@Test (expected = RuntimeException.class)
 	public void testParaCalcularBotellasPequenasSegunB2()
 	{
@@ -35,6 +37,7 @@ public class EmbotelladoraTest
 
 	// Test para calcular las botellas pequeñas según el bloque b3:
 	// "Mismo número de botellas pequeñas que grandes y total de litros inferior o igual a la capacidad"
+	// Recorre el camino de prueba iv = [1, 3, 5, 7]
 	@Test
 	public void testParaCalcularBotellasPequenasSegunB3()
 	{
@@ -47,6 +50,7 @@ public class EmbotelladoraTest
 
 	// Test para calcular las botellas pequeñas según el bloque b4:
 	// "Mismo número de botellas pequeñas que grandes y total de litros superior a la capacidad"
+	// Recorre el camino de prueba iii = [1, 3, 5, 6]
 	@Test (expected = RuntimeException.class)
 	public void testParaCalcularBotellasPequenasSegunB4()
 	{
@@ -58,6 +62,7 @@ public class EmbotelladoraTest
 
 	// Test para calcular las botellas pequeñas según el bloque b5:
 	// "Más botellas grandes que pequeñas y total de litros inferior o igual a la capacidad"
+	// Recorre el camino de prueba iv = [1, 3, 5, 7]
 	@Test
 	public void testParaCalcularBotellasPequenasSegunB5()
 	{
@@ -70,6 +75,7 @@ public class EmbotelladoraTest
 
 	// Test para calcular las botellas pequeñas según el bloque b6:
 	// "Más botellas grandes que pequeñas y total de litros superior a la capacidad"
+	// Recorre el camino de prueba iii = [1, 3, 5, 6]
 	@Test (expected = RuntimeException.class)
 	public void testParaCalcularBotellasPequenasSegunB6()
 	{
@@ -81,12 +87,25 @@ public class EmbotelladoraTest
 
 	// Test para calcular las botellas pequeñas según el bloque b7:
 	// "Cantidad de botellas/total de litros inválidos"
+	// Recorre el camino de prueba i = [1, 2]
 	@Test (expected = RuntimeException.class)
 	public void testParaCalcularBotellasPequenasSegunB7()
 	{
 		pequena = -3;
 		grande = -2;
 		total = -1;
+		embotelladora.calculaBotellasPequenas(pequena, grande, total);
+	}
+
+	// Test para calcular las botellas pequeñas según el bloque b7:
+	// "Cantidad de botellas/total de litros inválidos"
+	// Recorre el camino de prueba ii = [1, 3, 4]
+	@Test (expected = RuntimeException.class)
+	public void testParaCalcularBotellasPequenasSegunB7v2()
+	{
+		pequena = 0;
+		grande = 5;
+		total = 5;
 		embotelladora.calculaBotellasPequenas(pequena, grande, total);
 	}
 }
