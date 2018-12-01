@@ -20,7 +20,8 @@ public class DescuentoBlackFriday {
 	    Date datenow = new SimpleDateFormat("yyyy-MM-dd").parse(LocalDateTime.now().toString());
 	    Calendar calNow=Calendar.getInstance();
 	    calNow.setTime(datenow);
-
+		//---> Añadida gesión de números negativos
+		if(precioOriginal <= 0.00) throw new IllegalArgumentException();
 		if ((cal.get(Calendar.MONTH) == calNow.get(Calendar.MONTH))&&(cal.get(Calendar.DATE) == calNow.get(Calendar.DATE))) {
 			precio = precioOriginal * 0.7; //descuento del 30%
 		}
