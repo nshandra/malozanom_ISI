@@ -1,0 +1,17 @@
+La versión original de DescuentoBlackFriday: https://github.com/nshandra/malozanom_ISI/blob/master/Caso4-BlackFriday/DescuentoBlackFriday-orig.java
+
+Fallos:
+- Su Precio Final lanza una Parse Exception que mi test no captura en ningún momento.
+- No tienen en cuenta los números negativos, tendrían que lanzar excepción.
+Lo último lo he visto con el test:
+	//Test 2
+	@Test (expected = IllegalArgumentException.class)
+	public void testNonPositivePrice(){
+		price = -59.99;
+		dbf.PrecioFinal(price);
+
+	}
+Solución: modificar mi test para probar su Descuento y lanzar excepción en el caso de números negativos.
+La versión final de DescuentoBlackFriday: https://github.com/nshandra/malozanom_ISI/blob/master/Caso4-BlackFriday/DescuentoBlackFriday.java
+Y mi test modificado: https://github.com/nshandra/malozanom_ISI/blob/master/Caso4-BlackFriday/DescuentoBlackFridayTest.java
+
