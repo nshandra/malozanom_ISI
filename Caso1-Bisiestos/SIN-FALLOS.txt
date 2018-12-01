@@ -1,0 +1,13 @@
+La version original de Bisiestos: https://github.com/nshandra/malozanom_ISI/blob/master/Caso1-Bisiestos/Bisiestos.java
+
+Fallos:
+- No hay errores: el año negativo lo gestionamos con distinta excepción.
+Lo he encontrado con el test:
+	//Test 2
+	//---> En mi test modifico el tipo de excepción a esperar
+	@Test (expected = IllegalArgumentException.class)
+	public void testNegativeYear() {
+		year = -2000;
+		bis.esBisiesto(year);
+Solución: cambio el test 2 de mi BisiestosTest.java: la excepción que espero ahora es RuntimeException.
+La nueva versión de mi test: https://github.com/nshandra/malozanom_ISI/blob/master/Caso1-Bisiestos/BisiestosTest.java
