@@ -1,0 +1,12 @@
+Embotelladora:
+Se ha modificado la excepcion de parametros negativos por return -1 para que sea posible realizar data driven test.
+
+Se leva excepcion si pequenas == 0, para pasar los test se ha cambiado la excepcion por return -1 y se ha modificado la bateria de tests.
+
+Linea 25: pequenasNecesarias = total - grandes * 5; no se tiene en cuenta que grandes puede ser mayor que total.
+
+Versión original:
+https://github.com/nshandra/malozanom_ISI/blob/master/Caso3-Embotelladora/Embotelladora-orig.java
+
+Versión corregida:
+https://github.com/nshandra/malozanom_ISI/blob/master/Caso3-Embotelladora/Embotelladora.java

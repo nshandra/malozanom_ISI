@@ -12,24 +12,17 @@ public class Embotelladora {
 
 		// Si alguno de los parámetros es inválido => RuntimeException
 		if (pequenas < 0 || grandes < 0 || total < 0) {
-			return -1; // throw new RuntimeException("Parámetros inválidos");
+			throw new RuntimeException("Parámetros inválidos");
 		}
-
 		// Si no tenemos botellas pequeñas en el almacén => RuntimeException
 		if (pequenas == 0) {
-			return -1; // throw new RuntimeException("No hay botellas pequeñas en el almacén");
+			throw new RuntimeException("No hay botellas pequeñas en el almacén");
 		}
-
 		// Si el número total de litros que hay que embotellar supera la capacidad => RuntimeException
 		if (total > grandes * 5 + pequenas) {
-			return -1; // throw new RuntimeException("No hay suficientes botellas en el almacén");
+			throw new RuntimeException("No hay suficientes botellas en el almacén");
 		}
-
 		pequenasNecesarias = total - grandes * 5;
-		if (pequenasNecesarias < 0) {
-			return 0;
-		}
-
 		return pequenasNecesarias;
 	}
 }

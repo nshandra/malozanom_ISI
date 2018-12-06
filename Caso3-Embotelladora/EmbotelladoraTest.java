@@ -1,111 +1,86 @@
-// Instrucciones de compilación:
-// javac -cp .:./hamcrest-core-1.3.jar:./junit-4.12.jar EmbotelladoraTest.java
-
-import static org.junit.Assert.*;
 import org.junit.*;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import org.junit.runners.Parameterized.Parameters;
+import static org.junit.Assert.*;
 import java.util.*;
 
-public class EmbotelladoraTest
-{
-	Embotelladora embotelladora = new Embotelladora();   	// Test fixture
-	private int pequena, grande, total;
+@RunWith(Parameterized.class)
+public class EmbotelladoraTest {
 
-	// Test para calcular las botellas pequeñas según el bloque b1:
-	// "Más botellas pequeñas que grandes y total de litros inferior o igual a la capacidad"
-	// Recorre el camino de prueba iv = [1, 3, 5, 7]
+	int pequenas, grandes, total, expected;
+	Embotelladora emb = new Embotelladora(); 
+	
+	public EmbotelladoraTest (int pequenas, int grandes, int total, int expected) {
+		this.pequenas = pequenas;
+		this.grandes = grandes;
+		this.total = total;
+		this.expected = expected;
+	}
+
+	@Parameters
+	public static Collection<Object[]> calcValues() {
+		return Arrays.asList (new Object [][] {
+
+			// Happy path: valores positivos y total < grandes x 5 + pequeñas.
+			// [0] FFF TTT TF
+			{8,6,22,0},
+			// [1] FFF TTF TF
+			{20,2,-16,-1},
+			// [2] FFF TFT TF
+			{20,-1,16,-1},
+			// [3] FFF FTT TF
+			{-18,1,16,-1},
+			// Happy path: valores positivos y total = grandes x 5 + pequeñas.
+			// [4] FFF TTT FT
+			{5,1,10,5},
+			// [5] FFF TFT FT
+			{6,-2,16,-1},
+			// [6] FFF FTT FT
+			{-6,2,16,-1},
+			// Happy path: valores positivos y total > grandes x 5 + pequeñas.
+			// [7] FFF TTT FF
+			{3,1,18,-1},
+			// [8] FFF TFT FF
+			{-6,2,-5,-1},
+			// [9] FFF FTT FF
+			{-6,2,16,-1},
+			// Happy path: Pequeñas = 0, total y grandes > 0 y total > grandes x 5 + pequeñas.
+			// [10] TFF FTT FF
+			{0,1,11,-1},
+			// [11] TFF FFT FF
+			{0,-6,3,-1},
+			// [12] TFF FTT TF
+			{0,8,1,-1},
+			// [13] TFF FTT FT
+			{0,3,15,-1},
+			// Happy path: Grandes = 0, total y pequeñas > 0 y total > grandes x 5 + pequeñas.
+			// [14] FTF TFT FF
+			{1,0,2,-1},
+			// [15] FTF FFT FF
+			{-1,0,2,-1},
+			// [16] FTF TFT TF
+			{4,0,2,2},
+			// [17] FTF TFT FT
+			{3,0,3,3},
+			// Happy path: Total = 0, grandes y pequeñas > 0 y total < grandes x 5 + pequeñas.
+			// [18] FFT TTF TF
+			{1,1,0,0},
+			// [19] FFT FTF TF
+			{-1,1,0,-1},
+			// [20] FFT TFF TF
+			{1,-1,0,-1},
+			// Entrada mas simple: todo ceros.
+			// [21] TTT FFF FT
+			{0,0,0,-1}
+			});
+	}
+	
+
 	@Test
-	public void testParaCalcularBotellasPequenasSegunB1()
-	{
-		pequena = 7;
-		grande = 4;
-		total = 25;
-		int numPequena = embotelladora.calculaBotellasPequenas(pequena, grande, total);
-		assertTrue ("testParaAñoBisiestoSegunB1", numPequena == 5);
-	}
-
-	// Test para calcular las botellas pequeñas según el bloque b2:
-	// "Más botellas pequeñas que grandes y total de litros superior a la capacidad"
-	// Recorre el camino de prueba iii = [1, 3, 5, 6]
-	@Test (expected = RuntimeException.class)
-	public void testParaCalcularBotellasPequenasSegunB2()
-	{
-		pequena = 7;
-		grande = 4;
-		total = 28;
-		embotelladora.calculaBotellasPequenas(pequena, grande, total);
-	}
-
-	// Test para calcular las botellas pequeñas según el bloque b3:
-	// "Mismo número de botellas pequeñas que grandes y total de litros inferior o igual a la capacidad"
-	// Recorre el camino de prueba iv = [1, 3, 5, 7]
-	@Test
-	public void testParaCalcularBotellasPequenasSegunB3()
-	{
-		pequena = 3;
-		grande = 3;
-		total = 18;
-		int numPequena = embotelladora.calculaBotellasPequenas(pequena, grande, total);
-		assertTrue ("testParaAñoBisiestoSegunB3", numPequena == 3);
-	}
-
-	// Test para calcular las botellas pequeñas según el bloque b4:
-	// "Mismo número de botellas pequeñas que grandes y total de litros superior a la capacidad"
-	// Recorre el camino de prueba iii = [1, 3, 5, 6]
-	@Test (expected = RuntimeException.class)
-	public void testParaCalcularBotellasPequenasSegunB4()
-	{
-		pequena = 3;
-		grande = 3;
-		total = 19;
-		embotelladora.calculaBotellasPequenas(pequena, grande, total);
-	}
-
-	// Test para calcular las botellas pequeñas según el bloque b5:
-	// "Más botellas grandes que pequeñas y total de litros inferior o igual a la capacidad"
-	// Recorre el camino de prueba iv = [1, 3, 5, 7]
-	@Test
-	public void testParaCalcularBotellasPequenasSegunB5()
-	{
-		pequena = 1;
-		grande = 2;
-		total = 10;
-		int numPequena = embotelladora.calculaBotellasPequenas(pequena, grande, total);
-		assertTrue ("testParaAñoBisiestoSegunB3", numPequena == 0);
-	}
-
-	// Test para calcular las botellas pequeñas según el bloque b6:
-	// "Más botellas grandes que pequeñas y total de litros superior a la capacidad"
-	// Recorre el camino de prueba iii = [1, 3, 5, 6]
-	@Test (expected = RuntimeException.class)
-	public void testParaCalcularBotellasPequenasSegunB6()
-	{
-		pequena = 1;
-		grande = 2;
-		total = 12;
-		embotelladora.calculaBotellasPequenas(pequena, grande, total);
-	}
-
-	// Test para calcular las botellas pequeñas según el bloque b7:
-	// "Cantidad de botellas/total de litros inválidos"
-	// Recorre el camino de prueba i = [1, 2]
-	@Test (expected = RuntimeException.class)
-	public void testParaCalcularBotellasPequenasSegunB7()
-	{
-		pequena = -3;
-		grande = -2;
-		total = -1;
-		embotelladora.calculaBotellasPequenas(pequena, grande, total);
-	}
-
-	// Test para calcular las botellas pequeñas según el bloque b7:
-	// "Cantidad de botellas/total de litros inválidos"
-	// Recorre el camino de prueba ii = [1, 3, 4]
-	@Test (expected = RuntimeException.class)
-	public void testParaCalcularBotellasPequenasSegunB7v2()
-	{
-		pequena = 0;
-		grande = 5;
-		total = 5;
-		embotelladora.calculaBotellasPequenas(pequena, grande, total);
+	public void testCalculaBotellasPequenas() {
+		int res = emb.calculaBotellasPequenas(pequenas, grandes, total);
+		System.out.format("\n%d = %d ", expected, res);
+		assertTrue ("Addition Test", expected == res);
 	}
 }
